@@ -46,9 +46,3 @@ else
     vim.opt.undodir = os.getenv("HOME") .. "/.vim/undo//"
 end
 
----- OTHER ----
-
--- disable netrw
--- vim.g.loaded_netrw = 1
---vim.g.loaded_netrwPlugin = 1
-
