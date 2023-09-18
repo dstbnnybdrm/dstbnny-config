@@ -1,10 +1,9 @@
 require("zen-mode").setup {
     window = {
-        backdrop = 1,
-        width = 88,
-        height = 1,
+        width = 80,
+        height =1,
         options = {
-            signcolumn = "yes",
+            signcolumn = "no",
             number = true,
             relativenumber = true,
             cursorline = false,
@@ -21,3 +20,5 @@ require("zen-mode").setup {
         }
     }
 }
+
+vim.keymap.set("n", "<leader>zm", ":ZenMode<CR>")
