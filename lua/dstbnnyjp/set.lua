@@ -13,6 +13,9 @@ vim.opt.signcolumn = "yes"
 vim.opt.number = true
 vim.opt.relativenumber = true
 
+vim.opt.wrap = true
+vim.opt.linebreak = true
+
 vim.opt.fillchars = "eob:❀"
 vim.opt.listchars = "tab:> ,trail:·,extends:>,precedes:<,space:·"
 vim.opt.list = true
@@ -21,7 +24,6 @@ vim.g.netrw_banner = 0
 
 ---- EDITOR ----
 
-vim.opt.wrap = false -- fuck you
 vim.opt.scrolloff = 8
 
 vim.opt.tabstop = 4
@@ -45,4 +47,3 @@ else
     vim.opt.backupdir = os.getenv("HOME") .. "/.vim/backup//"
     vim.opt.undodir = os.getenv("HOME") .. "/.vim/undo//"
 end
-
