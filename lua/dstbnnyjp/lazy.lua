@@ -29,13 +29,18 @@ require("lazy").setup({
             { "rafamadriz/friendly-snippets" },
         }
     },
-    "jose-elias-alvarez/null-ls.nvim",
-    "jay-babu/mason-null-ls.nvim",
+    {
+        "jay-babu/mason-null-ls.nvim",
+        event = { "BufReadPre", "BufNewFile" },
+        dependencies = {
+            "williamboman/mason.nvim",
+            "jose-elias-alvarez/null-ls.nvim",
+        },
+    },
     {
         "nvim-treesitter/nvim-treesitter",  build = ":TSUpdate"
     },
     "nvim-lualine/lualine.nvim",
-    "folke/trouble.nvim",
     {
         "nvim-telescope/telescope.nvim", tag = "0.1.4",
         dependencies =  { "nvim-lua/plenary.nvim" }
@@ -45,6 +50,8 @@ require("lazy").setup({
     "tpope/vim-fugitive",
     "tpope/vim-commentary",
     "tpope/vim-surround",
+    "folke/trouble.nvim",
+    "nvim-tree/nvim-web-devicons",
     "folke/zen-mode.nvim",
     "junegunn/seoul256.vim",
 })
