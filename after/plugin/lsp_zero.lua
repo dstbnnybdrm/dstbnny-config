@@ -24,7 +24,7 @@ lsp_zero.format_on_save({
         timeout_ms = 10000,
     },
     servers = {
-        ["null-ls"] = {"html", "css", "javascript"},
+        ["null-ls"] = {"html", "css", "javascript", "markdown"},
     },
 })
 
