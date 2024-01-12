@@ -45,6 +45,15 @@ require("lazy").setup({
         "nvim-telescope/telescope.nvim", tag = "0.1.4",
         dependencies =  { "nvim-lua/plenary.nvim" }
     },
+    {
+        "iamcco/markdown-preview.nvim",
+        cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
+        build = "cd app && yarn install",
+        init = function()
+            vim.g.mkdp_filetypes = { "markdown" }
+        end,
+        ft = { "markdown" },
+    },
     "mbbill/undotree",
     "airblade/vim-gitgutter",
     "tpope/vim-fugitive",
