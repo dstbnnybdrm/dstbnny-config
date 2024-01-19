@@ -24,7 +24,9 @@ lsp_zero.format_on_save({
         timeout_ms = 10000,
     },
     servers = {
-        ["null-ls"] = {"html", "css", "javascript", "markdown"},
+        ["null-ls"] = {"html", "css", "scss", "javascript", "markdown", "yml",
+        "json"},
+        ["clang-format"] = {"cpp", "hpp"},
     },
 })
 
@@ -32,7 +34,14 @@ lsp_zero.setup()
 
 require("mason").setup({})
 require("mason-lspconfig").setup({
-  ensure_installed = {"html", "cssls", "eslint"},
+  ensure_installed = {
+      -- web dev 
+      "html", "cssls", "tsserver",
+      -- C++ dev
+      "clangd", "cmake",
+      -- other
+      "marksman"
+  },
   handlers = {
     lsp_zero.default_setup,
   },
