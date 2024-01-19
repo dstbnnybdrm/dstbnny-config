@@ -8,10 +8,6 @@ vim.g.mapleader = " "
 vim.keymap.set("n", "<C-u>", "<C-u>zz")
 vim.keymap.set("n", "<C-d>", "<C-d>zz")
 
--- remap page up/down keys from full- to half-page jumping
-vim.keymap.set("n", "<PageUp>", "<C-u>zz")
-vim.keymap.set("n", "<PageDown>", "<C-d>zz")
-
 ---- QUALITY OF LIFE ----
 
 -- remove search highlight
