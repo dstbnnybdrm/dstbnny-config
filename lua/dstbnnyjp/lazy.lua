@@ -12,6 +12,7 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
+    -- LSP setup
     {
         "VonHeikemen/lsp-zero.nvim",
         branch = "v1.x",
@@ -37,14 +38,47 @@ require("lazy").setup({
             "jose-elias-alvarez/null-ls.nvim",
         },
     },
+
+    -- diagnostics
+    "folke/trouble.nvim",
+
+    -- semantic code highlighting
     {
         "nvim-treesitter/nvim-treesitter",  build = ":TSUpdate"
     },
+
+    -- status line
     "nvim-lualine/lualine.nvim",
+
+    -- file searching
     {
         "nvim-telescope/telescope.nvim", tag = "0.1.4",
         dependencies =  { "nvim-lua/plenary.nvim" }
     },
+
+    -- undo history + undo branches
+    "mbbill/undotree",
+
+    -- git integration
+    "airblade/vim-gitgutter",
+    "tpope/vim-fugitive",
+    
+    -- qol stuff
+    "tpope/vim-commentary",
+    "tpope/vim-surround",
+    "folke/zen-mode.nvim",
+    {
+        'windwp/nvim-autopairs',
+        event = "InsertEnter",
+        opts = {} -- this is equalent to setup({}) function
+    },
+    "liuchengxu/vista.vim",
+
+    -- appearance
+    "nvim-tree/nvim-web-devicons",
+    "junegunn/seoul256.vim",
+
+    -- for school notes lol 
     {
         "iamcco/markdown-preview.nvim",
         cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
@@ -54,13 +88,4 @@ require("lazy").setup({
         end,
         ft = { "markdown" },
     },
-    "mbbill/undotree",
-    "airblade/vim-gitgutter",
-    "tpope/vim-fugitive",
-    "tpope/vim-commentary",
-    "tpope/vim-surround",
-    "folke/trouble.nvim",
-    "nvim-tree/nvim-web-devicons",
-    "folke/zen-mode.nvim",
-    "junegunn/seoul256.vim",
 })
