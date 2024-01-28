@@ -76,7 +76,8 @@ require("lazy").setup({
 
     -- appearance
     "nvim-tree/nvim-web-devicons",
-    "junegunn/seoul256.vim",
+    -- "junegunn/seoul256.vim",
+    { "rose-pine/neovim", name = "rose-pine" },
 
     -- for school notes lol 
     {
