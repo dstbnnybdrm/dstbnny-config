@@ -26,7 +26,7 @@ lsp_zero.format_on_save({
     servers = {
         ["null-ls"] = {"html", "css", "scss", "javascript", "markdown", "yml",
         "json"},
-        ["clang-format"] = {"cpp", "hpp"},
+        ["clangd"] = {"cpp", "hpp"},
     },
 })
 
