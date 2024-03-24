@@ -25,6 +25,7 @@ require("lazy").setup({
     -- auto completion sources
     "hrsh7th/cmp-buffer",
     "hrsh7th/cmp-path",
+    "f3fora/cmp-spell",
     {
         "L3MON4D3/LuaSnip",
         dependencies = { "rafamadriz/friendly-snippets" },

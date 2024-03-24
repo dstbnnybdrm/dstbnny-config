@@ -36,6 +36,9 @@ vim.opt.smartindent = true
 vim.opt.hlsearch = true
 vim.opt.incsearch = true
 
+vim.opt.spell = true
+vim.opt.spelllang = { 'en_us' }
+
 ---- BACKUP DIRECTORIES ----
 
 vim.opt.swapfile = false -- fuck you

@@ -76,6 +76,7 @@ cmp.setup({
         { name = "luasnip" },
         { name = "path" },
         { name = "buffer" },
+        { name = "spell" },
     },
     mapping = cmp.mapping.preset.insert({
         ['<C-f>'] = cmp_action.luasnip_jump_forward(),
