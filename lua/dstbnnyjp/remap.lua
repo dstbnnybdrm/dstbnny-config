@@ -8,6 +8,9 @@ vim.g.mapleader = " "
 vim.keymap.set("n", "<C-u>", "<C-u>zz")
 vim.keymap.set("n", "<C-d>", "<C-d>zz")
 
+-- shortcut to opening netrw
+vim.keymap.set("n", "<leader>ex", ":Ex<cr>")
+
 ---- QUALITY OF LIFE ----
 
 -- remove search highlight
