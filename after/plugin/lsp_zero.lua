@@ -1,90 +1,86 @@
----- LSP ----
-
--- use "minimal" preset
-local lsp_zero = require("lsp-zero").preset({})
+local lsp_zero = require("lsp-zero")
 
 lsp_zero.on_attach(function(client, bufnr)
-    -- set keymaps
-    local opts = {buffer = bufnr, remap = false}
-    vim.keymap.set("n", "gd", function() vim.lsp_zero.buf.definition() end, opts)
-    vim.keymap.set("n", "K", function() vim.lsp_zero.buf.hover() end, opts)
-    vim.keymap.set("n", "<leader>vws", function() vim.lsp_zero.buf.workspace_symbol() end, opts)
-    vim.keymap.set("n", "<leader>vd", function() vim.diagnostic.open_float() end, opts)
-    vim.keymap.set("n", "[d", function() vim.diagnostic.goto_next() end, opts)
-    vim.keymap.set("n", "]d", function() vim.diagnostic.goto_prev() end, opts)
-    vim.keymap.set("n", "<leader>vca", function() vim.lsp_zero.buf.code_action() end, opts)
-    vim.keymap.set("n", "<leader>vrr", function() vim.lsp_zero.buf.references() end, opts)
-    vim.keymap.set("n", "<leader>vrn", function() vim.lsp_zero.buf.rename() end, opts)
-    vim.keymap.set("i", "<C-h>", function() vim.lsp_zero.buf.signature_help() end, opts)
+    -- see :help lsp-zero-keybindings
+    -- to learn the available actions
+    lsp_zero.default_keymaps({ buffer = bufnr })
 end)
+
+-- LSP CONFIGURATION
+
+require("mason").setup({})
+require("mason-lspconfig").setup({
+    ensure_installed = {
+        -- web dev
+        "html",
+        "cssls",
+        "tsserver",
+        -- C++ dev
+        "clangd",
+        "cmake",
+        -- other
+        "marksman",
+    },
+    handlers = {
+        lsp_zero.default_setup,
+        -- to stop showing me warnings on every line in my config lmao
+        lua_ls = function()
+            local lua_opts = lsp_zero.nvim_lua_ls()
+            require('lspconfig').lua_ls.setup(lua_opts)
+        end,
+    },
+})
+
+-- FORMATTING
 
 lsp_zero.format_on_save({
     format_opts = {
         async = false,
-        timeout_ms = 10000,
+        timeout_ms = 500,
     },
     servers = {
-        ["null-ls"] = {"html", "css", "scss", "javascript", "markdown", "yml",
-        "json"},
-        ["clangd"] = {"cpp", "hpp"},
+        ["clangd"] = { "cpp", "hpp" },
     },
 })
 
-lsp_zero.setup()
 
-require("mason").setup({})
-require("mason-lspconfig").setup({
-  ensure_installed = {
-      -- web dev 
-      "html", "cssls", "tsserver",
-      -- C++ dev
-      "clangd", "cmake",
-      -- other
-      "marksman"
-  },
-  handlers = {
-    lsp_zero.default_setup,
-  },
+require("conform").setup({
+    formatters_by_ft = {
+        javascript = { { "prettierd", "prettier" } },
+        html = { { "prettierd", "prettier" } },
+        css = { { "prettierd", "prettier" } },
+        scss = { { "prettierd", "prettier" } },
+        json = { { "prettierd", "prettier" } },
+        yaml = { { "prettierd", "prettier" } },
+        markdown = { { "prettierd", "prettier" } },
+    },
+    format_on_save = {
+        timeout_ms = 500,
+        lsp_fallback = true,
+    },
 })
 
-require("mason-null-ls").setup({})
-
-local null_ls = require("null-ls")
-null_ls.setup({
-  sources = {
-    null_ls.builtins.formatting.prettierd,
-  }
-})
-
----- COMPLETION ----
+-- AUTOCOMPLETION
 
 local cmp = require("cmp")
 local cmp_action = require("lsp-zero").cmp_action()
+local cmp_format = require("lsp-zero").cmp_format({ details = true })
 
-require('luasnip.loaders.from_vscode').lazy_load()
+require("luasnip.loaders.from_vscode").lazy_load()
 
 cmp.setup({
-    -- specify snippet engine
-    snippet = {
-        expand = function(args)
-            require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
-        end,
-    },
-    mapping = {
-        ["<C-p>"] = cmp.mapping.select_prev_item(cmp_select),
-        ["<C-n>"] = cmp.mapping.select_next_item(cmp_select),
-        ["<CR>"] = cmp.mapping.confirm({select = false}),
-        ["<C-Space>"] = cmp.mapping.complete(),
-        ['<Tab>'] = cmp_action.tab_complete(),
-        ['<S-Tab>'] = cmp_action.select_prev_or_fallback(),
-    },
     sources = {
-        {name = "nvim_lsp"},
-        {name = "path"},
-        {name = "luasnip"},
-        {name = "buffer"},
-        -- nvim's lua api
-        {name = 'nvim_lua'},
+        { name = "nvim_lsp" },
+        { name = "nvim_lua" },
+        { name = "scss" },
+        { name = "luasnip" },
+        { name = "path" },
+        { name = "buffer" },
+        { name = "spell" },
     },
+    mapping = cmp.mapping.preset.insert({
+        ['<C-f>'] = cmp_action.luasnip_jump_forward(),
+        ['<C-b>'] = cmp_action.luasnip_jump_backward(),
+    }),
+    formatting = cmp_format,
 })
-
