@@ -1,8 +1,7 @@
 local lsp_zero = require("lsp-zero")
 
+-- use default keymaps
 lsp_zero.on_attach(function(client, bufnr)
-    -- see :help lsp-zero-keybindings
-    -- to learn the available actions
     lsp_zero.default_keymaps({ buffer = bufnr })
 end)
 
@@ -15,6 +14,7 @@ require("mason-lspconfig").setup({
         "html",
         "cssls",
         "tsserver",
+        "eslint",
         -- C++ dev
         "clangd",
         "cmake",
@@ -43,7 +43,6 @@ lsp_zero.format_on_save({
     },
 })
 
-
 require("conform").setup({
     formatters_by_ft = {
         javascript = { { "prettierd", "prettier" } },
@@ -66,17 +65,16 @@ local cmp = require("cmp")
 local cmp_action = require("lsp-zero").cmp_action()
 local cmp_format = require("lsp-zero").cmp_format({ details = true })
 
-require("luasnip.loaders.from_vscode").lazy_load()
+require("luasnip/loaders/from_vscode").lazy_load()
 
 cmp.setup({
     sources = {
         { name = "nvim_lsp" },
         { name = "nvim_lua" },
-        { name = "scss" },
-        { name = "luasnip" },
+        { name = "luasnip", keyword_length = 2 },
         { name = "path" },
-        { name = "buffer" },
-        { name = "spell" },
+        { name = "buffer",  keyword_length = 3 },
+        { name = "spell",   keyword_length = 3 },
     },
     mapping = cmp.mapping.preset.insert({
         ['<C-f>'] = cmp_action.luasnip_jump_forward(),

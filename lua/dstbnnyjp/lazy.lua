@@ -13,23 +13,24 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
     -- LSP setup
-    'williamboman/mason.nvim',
-    'williamboman/mason-lspconfig.nvim',
     { 'VonHeikemen/lsp-zero.nvim', branch = 'v3.x', },
     'neovim/nvim-lspconfig',
+    'williamboman/mason.nvim',
+    'williamboman/mason-lspconfig.nvim',
 
     -- auto completion
     'hrsh7th/cmp-nvim-lsp',
     'hrsh7th/nvim-cmp',
 
     -- auto completion sources
-    "hrsh7th/cmp-buffer",
-    "hrsh7th/cmp-path",
-    "f3fora/cmp-spell",
     {
         "L3MON4D3/LuaSnip",
         dependencies = { "rafamadriz/friendly-snippets" },
     },
+    "saadparwaiz1/cmp_luasnip",
+    "hrsh7th/cmp-buffer",
+    "hrsh7th/cmp-path",
+    "f3fora/cmp-spell",
 
     -- formatting
     'stevearc/conform.nvim',
@@ -68,21 +69,20 @@ require("lazy").setup({
         event = "InsertEnter",
         opts = {}
     },
-    "liuchengxu/vista.vim",
 
     -- appearance
     "nvim-tree/nvim-web-devicons",
     -- "junegunn/seoul256.vim",
     { "rose-pine/neovim",          name = "rose-pine" },
 
-    -- for school notes lol
-    {
-        "iamcco/markdown-preview.nvim",
-        cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
-        build = "cd app && yarn install",
-        init = function()
-            vim.g.mkdp_filetypes = { "markdown" }
-        end,
-        ft = { "markdown" },
-    },
+    -- -- for school notes lol
+    -- {
+    --     "iamcco/markdown-preview.nvim",
+    --     cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
+    --     build = "cd app && yarn install",
+    --     init = function()
+    --         vim.g.mkdp_filetypes = { "markdown" }
+    --     end,
+    --     ft = { "markdown" },
+    -- },
 })
