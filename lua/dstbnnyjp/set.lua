@@ -1,53 +1,51 @@
+local opt = vim.opt
+
 ---- INTERFACE + APPEARANCE ----
-vim.opt.termguicolors = true
-vim.opt.colorcolumn = "81"
+opt.termguicolors = true
+opt.colorcolumn = "81"
 
-vim.opt.visualbell = true -- flash instead of DING
-vim.opt.guicursor = ""    -- i like my fat cursor
+opt.visualbell = true -- flash instead of DING
+opt.guicursor = ""    -- i like my fat cursor
 
-vim.opt.showmode = false
+opt.showmode = false
 
-vim.opt.title = false
+opt.title = false
 
-vim.opt.signcolumn = "yes"
-vim.opt.number = true
-vim.opt.relativenumber = true
+opt.signcolumn = "yes"
+opt.number = true
+opt.relativenumber = true
 
-vim.opt.wrap = true
-vim.opt.linebreak = true
+opt.wrap = true
+opt.linebreak = true
 
-vim.opt.fillchars = "eob:❀"
-vim.opt.listchars = "tab:> ,trail:·,extends:>,precedes:<,space:·"
-vim.opt.list = true
+opt.fillchars = "eob:❀"
+opt.listchars = "tab:> ,trail:·,extends:>,precedes:<,space:·"
+opt.list = true
 
-vim.g.netrw_banner = 0
+
 
 ---- EDITOR ----
+opt.scrolloff = 8
 
-vim.opt.scrolloff = 8
+opt.tabstop = 4
+opt.shiftwidth = 0 -- no tabs :vomit:
+opt.expandtab = true
 
-vim.opt.tabstop = 4
-vim.opt.shiftwidth = 0 -- no tabs :vomit:
-vim.opt.expandtab = true
+opt.autoindent = true
+opt.smartindent = true
 
-vim.opt.autoindent = true
-vim.opt.smartindent = true
+opt.hlsearch = true
+opt.incsearch = true
 
-vim.opt.hlsearch = true
-vim.opt.incsearch = true
-
-vim.opt.spell = true
-vim.opt.spelllang = { 'en_us' }
+opt.spell = true
+opt.spelllang = { 'en_us' }
 
 ---- BACKUP DIRECTORIES ----
 
-vim.opt.swapfile = false -- fuck you
+opt.swapfile = false -- fuck you
+opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
+opt.undofile = true
 
 ---- DIAGNOSTICS ----
 
-vim.diagnostic.config({ virtual_text = false })
-
--- show diagnostic on hover
-vim.opt.updatetime = 750 -- make the default NOT like 4 whole sec lol
-vim.cmd [[autocmd CursorHold * lua vim.diagnostic.open_float()]]
-vim.cmd [[autocmd CursorHoldI * silent! lua vim.lsp.buf.signature_help()]]
+opt.updatetime = 750 -- make the default NOT like 4 whole sec lol

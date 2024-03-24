@@ -3,7 +3,7 @@
 -- vim.cmd('highlight normal guibg=000000')
 --
 require("rose-pine").setup({
-    variant = "dawn", -- auto, main, moon, or dawn
+    variant = "dawn",      -- auto, main, moon, or dawn
     dark_variant = "main", -- main, moon, or dawn
     dim_inactive_windows = false,
     extend_background_behind_borders = true,
@@ -11,13 +11,13 @@ require("rose-pine").setup({
     enable = {
         terminal = true,
         legacy_highlights = true, -- Improve compatibility for previous versions of Neovim
-        migrations = true, -- Handle deprecated options automatically
+        migrations = true,        -- Handle deprecated options automatically
     },
 
     styles = {
         bold = true,
         italic = true,
-        transparency = false,
+        transparency = true,
     },
 
     groups = {
