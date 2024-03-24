@@ -40,20 +40,11 @@ vim.opt.incsearch = true
 
 vim.opt.swapfile = false -- fuck you
 
-if vim.loop.os_uname().sysname == "Windows_NT" then
-    vim.opt.backupdir = os.getenv("UserProfile") .. "/.vim/backup//"
-    vim.opt.undodir = os.getenv("UserProfile") .. "/.vim/undo//"
-else
-    vim.opt.backupdir = os.getenv("HOME") .. "/.vim/backup//"
-    vim.opt.undodir = os.getenv("HOME") .. "/.vim/undo//"
-end
+---- DIAGNOSTICS ----
 
----- SHOW DIAGNOSTIC ON HOVER ----
+vim.diagnostic.config({ virtual_text = false })
 
--- make the default NOT like 4 whole sec lol
-vim.opt.updatetime = 750
-
+-- show diagnostic on hover
+vim.opt.updatetime = 750 -- make the default NOT like 4 whole sec lol
 vim.cmd [[autocmd CursorHold * lua vim.diagnostic.open_float()]]
 vim.cmd [[autocmd CursorHoldI * silent! lua vim.lsp.buf.signature_help()]]
-
-

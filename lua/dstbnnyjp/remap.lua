@@ -5,8 +5,18 @@ vim.g.mapleader = " "
 ---- NAVIGATION ----
 
 -- half-page jumping keeps cursor centred (yeeted from ThePrimeagen)
-vim.keymap.set("n", "<C-u>", "<C-u>zz")
-vim.keymap.set("n", "<C-d>", "<C-d>zz")
+-- local function lazykeys(keys)
+--     keys = vim.api.nvim_replace_termcodes(keys, true, false, true)
+--     return function()
+--         local old = vim.o.lazyredraw
+--         vim.o.lazyredraw = true
+--         vim.api.nvim_feedkeys(keys, 'nx', false)
+--         vim.o.lazyredraw = old
+--     end
+-- end
+
+vim.keymap.set('n', '<c-u>', '<c-u>zz')
+vim.keymap.set('n', '<c-d>', '<c-d>zz')
 
 ---- QUALITY OF LIFE ----
 
@@ -19,4 +29,3 @@ vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 
 -- ThePrimeagen yank wizardry
 vim.keymap.set("x", "<leader>p", [["_dP]])
-
