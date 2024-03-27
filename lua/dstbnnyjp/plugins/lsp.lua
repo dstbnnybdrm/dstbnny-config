@@ -49,7 +49,7 @@ return {
                 },
                 mapping = cmp.mapping.preset.insert({
                     ["<C-Space>"] = cmp.mapping.complete(),
-                    ['<CR>'] = cmp.mapping.confirm({ select = true }),
+                    ['<CR>'] = cmp.mapping.confirm({ select = false }),
                     ["<C-u>"] = cmp.mapping.scroll_docs(-4),
                     ["<C-d>"] = cmp.mapping.scroll_docs(4),
                     ["<C-f>"] = cmp_action.luasnip_jump_forward(),
