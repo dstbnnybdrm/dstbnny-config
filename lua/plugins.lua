@@ -11,8 +11,6 @@ local now = MiniDeps.now
 -- use for everything else which doesn't need precisely timed effect.
 local later = MiniDeps.later
 
-local map = vim.keymap.set
-
 -- APPEARANCE ------------------------------------------------------------------
 
 now(function()
@@ -49,8 +47,7 @@ now(function()
             section_separators = { left = '', right = '' },
         }
     })
-end
-)
+end)
 
 -- LANGUAGE SERVER PROTOCOL ----------------------------------------------------
 
@@ -82,8 +79,7 @@ now(function()
         },
         highlight = { enable = true },
     })
-end
-)
+end)
 
 later(function()
     -- Mason extension to use with lspconfig
@@ -179,22 +175,24 @@ later(function()
         --     default = { "lsp", "path", "snippets" },
         -- },
     })
-end
-)
+end)
 
 -- QUALITY OF LIFE -------------------------------------------------------------
 
 later(function()
     -- multi-purpose picker
-    add("nvim-mini/mini.pick")
+    add({ source = "nvim-mini/mini.pick" })
     require("mini.pick").setup()
-    map("n", "<leader>ff", ":Pick files<CR>")
-    map("n", "<leader>fg", ":Pick grep_live<CR>")
-    map("n", "<leader>fh", ":Pick help<CR>")
+
+    -- shows available keybindings as you type
+    -- i forgor sometimes lmao
+    add({ source = "folke/which-key.nvim" })
+    require("which-key").setup({
+        preset = "helix",
+    })
 
     -- visualizes the undo history into branches
     add({ source = "mbbill/undotree" })
-    map("n", "<leader>u", vim.cmd.UndotreeToggle)
 
     -- convenient commenting shortcuts
     add({ source = "tpope/vim-commentary" })
@@ -227,5 +225,4 @@ later(function()
 
     -- pog Git wrapper
     add({ source = "tpope/vim-fugitive" })
-end
-)
+end)
