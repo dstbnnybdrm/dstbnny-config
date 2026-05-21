@@ -21,6 +21,13 @@ map("n", "<leader>ex", ":Ex<cr>", { desc = "Open Netrw" })
 
 -- EDITING ---------------------------------------------------------------------
 
+-- move lines in visual mode (yeeted from ThePrimeagen)
+map("v", "J", ":m '>+1<CR>gv=gv")
+map("v", "K", ":m '<-2<CR>gv=gv")
+
+-- keep previous Yank after pasting onto something (yoinked from ThePrimeagen)
+map("x", "<leader>p", [["_dP]])
+
 -- highlight yanks
 vim.api.nvim_create_autocmd('TextYankPost', {
     callback = function() vim.highlight.on_yank { timeout = 500 } end
