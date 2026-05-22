@@ -32,7 +32,7 @@ vim.opt.incsearch = true -- show matches as you type
 
 vim.opt.termguicolors = true -- enable 24-bit colours
 vim.opt.signcolumn = "yes"   -- always show sign column
-vim.opt.colorcolumn = "81"   -- show column at 81st char
+vim.opt.colorcolumn = "81"   -- visual indicator of preferred line limit
 vim.opt.showmatch = true     -- highlight matching brackets
 
 vim.g.netrw_banner = 0       -- disable netrw banner
@@ -80,7 +80,7 @@ vim.opt.encoding = "UTF-8"             -- set encoding
 vim.opt.splitbelow = false
 vim.opt.splitright = true
 
--- spelling
+-- spelling check
 vim.opt.spell = true
 vim.opt.spelllang = "en_gb"
 
