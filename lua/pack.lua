@@ -97,3 +97,10 @@ vim.lsp.config["lua_ls"] = {
         }
     }
 }
+
+-- already handled by biome
+vim.lsp.config["html"] = {
+    init_options = {
+        provideFormatter = false
+    }
+}
