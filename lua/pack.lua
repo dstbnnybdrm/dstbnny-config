@@ -8,11 +8,12 @@ vim.pack.add({
     "https://github.com/rose-pine/neovim",
     -- i forgor sometime
     "https://github.com/folke/which-key.nvim",
-    -- mini: finder and autopairs
+    -- fuzzy find
     "https://github.com/nvim-mini/mini.pick",
+    -- editing
     "https://github.com/nvim-mini/mini.pairs",
-    -- tpope: surround and git integration
     "https://github.com/tpope/vim-surround",
+    -- git
     "https://github.com/tpope/vim-fugitive",
     "https://github.com/airblade/vim-gitgutter",
     -- LSP
