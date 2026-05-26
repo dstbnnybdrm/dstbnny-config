@@ -14,6 +14,7 @@ vim.pack.add({
     -- tpope: surround and git integration
     "https://github.com/tpope/vim-surround",
     "https://github.com/tpope/vim-fugitive",
+    "https://github.com/airblade/vim-gitgutter",
     -- LSP
     "https://github.com/neovim/nvim-lspconfig",
     "https://github.com/mason-org/mason.nvim",
@@ -50,6 +51,26 @@ vim.keymap.set("n", "<leader>pb", "<cmd>Pick buffers<CR>", { desc = "Pick Buffer
 vim.keymap.set("n", "<leader>ph", "<cmd>Pick help<CR>", { desc = "Pick Help" })
 
 require("mini.pairs").setup()
+
+--------------------------------------------------------------------------------
+
+-- using symbols from https://github.com/lewis6991/gitsigns.nvim lol
+vim.g.gitgutter_sign_added = "┃"
+vim.g.gitgutter_sign_modified = "┃"
+vim.g.gitgutter_sign_removed = "_"
+vim.g.gitgutter_sign_removed_first_line = "‾"
+-- vim.g.gitgutter_sign_removed_above_and_below = "{"
+vim.g.gitgutter_sign_modified_removed = "~"
+
+vim.keymap.set(
+    "n", "]h", "<Plug>(GitGutterNextHunk)", {
+        desc = "Jump to next hunk (change)" }
+)
+vim.keymap.set(
+    "n", "[h", "<Plug>(GitGutterPrevHunk)", {
+        desc = "Jump to previous hunk (change)"
+    }
+)
 
 --------------------------------------------------------------------------------
 
