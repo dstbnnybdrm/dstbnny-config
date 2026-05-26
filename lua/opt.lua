@@ -38,7 +38,7 @@ vim.opt.showmatch = true     -- highlight matching brackets
 vim.g.netrw_banner = 0       -- disable netrw banner
 
 -- set border styles for windows and popup menus
-vim.opt.winborder = "rounded"
+vim.opt.winborder = "single"
 vim.opt.pumborder = "single"
 
 -- visualize whitespace
@@ -66,6 +66,8 @@ vim.opt.autoread = true
 vim.opt.autowrite = false -- don't auto save
 
 -- BEHAVIOUR -------------------------------------------------------------------
+
+vim.opt.textwidth = 80
 
 vim.opt.title = false                  -- don't set title of window
 
